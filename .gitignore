@@ -1,0 +1,8 @@
+node_modules/
+dist-web/
+prisma/dev.db
+prisma/migrations/
+server/uploads/
+*.log
+temp/
+tmp/

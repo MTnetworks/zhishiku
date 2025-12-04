@@ -1,0 +1,65 @@
+// Prisma schema for SQLite integration
+// Run: npx prisma generate && npx prisma migrate dev --name init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Document {
+  id         String  @id
+  title      String
+  category   String?
+  alias      String?
+  tags       String?
+  richText   String?
+  markdown   String?
+  blocks     String?
+  code       String?
+  ownerId    String?
+  owner      User?   @relation(fields: [ownerId], references: [id])
+  accesses   DocumentAccess[]
+  createdAt  String
+  updatedAt  String
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+}
+
+model Bookmark {
+  id        String @id
+  url       String
+  title     String?
+  group     String?
+  tags      String?
+  createdAt String
+}
+
+model User {
+  id           String  @id @default(cuid())
+  username     String  @unique
+  email        String?
+  passwordHash String
+  name         String?
+  role         String  @default("user")
+  createdAt    String
+  documents    Document[]
+  accesses     DocumentAccess[]
+}
+
+model DocumentAccess {
+  id     Int    @id @default(autoincrement())
+  docId  String
+  userId String
+  level  String  // read | write
+  doc    Document @relation(fields: [docId], references: [id])
+  user   User     @relation(fields: [userId], references: [id])
+  @@unique([docId, userId])
+}

@@ -1,0 +1,47 @@
+{
+  "name": "zsk-knowledge-base",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "reset:db": "node scripts/reset-db.js",
+    "prisma:generate": "node -e \"process.env.PRISMA_CLIENT_ENGINE_TYPE='library'; require('child_process').spawnSync('npx', ['prisma','generate'], {stdio:'inherit', shell:true})\"",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --name init",
+    "test": "vitest",
+    "e2e": "playwright test",
+    "format": "prettier -w ."
+  },
+  "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "adm-zip": "^0.5.10",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "element-plus": "^2.7.8",
+    "express": "^4.19.2",
+    "highlight.js": "^11.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "marked": "^12.0.2",
+    "monaco-editor": "^0.51.0",
+    "morgan": "^1.10.1",
+    "pinia": "^2.2.4",
+    "quill": "^1.3.7",
+    "sortablejs": "^1.15.2",
+    "vue": "^3.5.0",
+    "vue-router": "^4.3.0",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "prettier": "^3.3.3",
+    "prisma": "^5.18.0",
+    "sass": "^1.77.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.6.0"
+  }
+}

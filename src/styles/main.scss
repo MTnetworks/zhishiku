@@ -1,0 +1,54 @@
+:root {
+  --sidebar-width: 260px;
+  /* 全局字体增大：覆盖 Element Plus 字号变量 */
+  --el-font-size-extra-small: 14px;
+  --el-font-size-small: 15px;
+  --el-font-size-base: 16px;
+  --el-font-size-medium: 17px;
+  --el-font-size-large: 18px;
+  --el-font-size-extra-large: 20px;
+  /* 代码块颜色（浅色） */
+  --code-bg: #f5f7fa;
+  --code-fg: #303133;
+}
+
+html, body, #app { height: 100%; }
+body { margin: 0; }
+
+/* 主要组件字体微调（基于变量统一放大） */
+.el-card__header, .card-header { font-size: var(--el-font-size-large); }
+.el-table, .el-table .cell { font-size: var(--el-font-size-small); }
+.el-button { font-size: var(--el-font-size-small); }
+.el-input, .el-select, .el-textarea, .el-input__inner { font-size: var(--el-font-size-small); }
+.el-breadcrumb, .el-breadcrumb__inner { font-size: var(--el-font-size-small); }
+.el-tag { font-size: var(--el-font-size-small); }
+
+/* 统一编辑器与查看页的基础字体大小与行高（Quill 默认较小） */
+.ql-editor { font-size: 16px; line-height: 1.7; }
+.ql-editor p { margin: 8px 0; }
+
+.layout { background: var(--el-bg-color); }
+
+/* UI 优化：卡片标题、间距、代码块样式 */
+.card-header {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.el-card { border-radius: 8px; }
+.el-card__header { padding: 10px 14px; }
+.el-card__body { padding: 14px; }
+
+.toolbar { gap: 10px; }
+
+pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+pre { background: var(--code-bg); color: var(--code-fg); border-radius: 6px; padding: 10px; }
+
+/* 深色主题专用变量覆盖 */
+html.dark {
+  --code-bg: #0f172a;
+  --code-fg: #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 8px !important; }
+}
